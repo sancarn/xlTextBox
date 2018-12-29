@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Addins minimally require:
+  
+  * AppDomain      (can be anything)
+  * SourceLocation (MUST BE A VALID URL which doesn't return http error code. Can be a file:/// url also)
+  * ProviderName   (can be anything)
+  * DefaultLocale  (can be anything)
+  * DisplayNam     (can be anything)
+  * Description    (can be anything)
+  * Permissions    (can be anything)
+  * ID?            (Untested: Should be unique)
+  
+-->
+
+
+<OfficeApp 
+    xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" 
+    xsi:type="ContentApp">
+    
+  <Id>c6890c26-5bbb-40ed-a321-37f07909a2f0</Id>
+  <Version>1.0</Version>
+  <ProviderName>Test-TextBox</ProviderName>
+  <DefaultLocale>en-GB</DefaultLocale>
+  <DisplayName DefaultValue="Test-TextBox" />
+  <Description DefaultValue="Test-TextBox"/>
+  <AppDomains><AppDomain>https://sancarn.github.io</AppDomain></AppDomains>
+  <DefaultSettings>
+      <SourceLocation DefaultValue="file:///\\mycloudex2ultra\public\jamesMsoAddins\textBox.html" />
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+</OfficeApp>

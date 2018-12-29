@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <base href="/">
+    <title>Run: Blank snippet</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- For purposes of experimentation, disable caching, so that can make changes and see results immediately on reload: -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+
+    <!-- Office.js Reference -->
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="https://unpkg.com/office-ui-fabric-js@1.4.0/dist/css/fabric.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/office-ui-fabric-js@1.4.0/dist/css/fabric.components.min.css" />
+
+    <!-- Style -->
+    <style type="text/css">
+        section.samples {
+            margin-top: 20px;
+        }
+        
+        section.samples .ms-Button, section.setup .ms-Button {
+            display: block;
+            margin-bottom: 5px;
+            margin-left: 20px;
+            min-width: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HTML -->
+    <!-- saved from url=(0060)https://sancarn.github.io/msoAddinTests/textBox/textBox.html -->
+    <html>
+    
+    <head>
+    	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    
+    <body>
+    	<input id="input"/>
+    </body>
+    
+    </html>
+
+    <!-- ScriptLab-Specific Runtime Helpers -->
+    <script src="https://script-lab.azureedge.net/libs/auth-helpers.js?hash=f2a708058c58bf7b8466"></script>
+    <script src="https://script-lab.azureedge.net/libs/maker.js?hash=f2a708058c58bf7b8466"></script>
+    <script>
+        window.ScriptLab = window.ScriptLab || {};
+        window.ScriptLab._strings = {"unexpectedError":"An unexpected error has occurred","authenticationWasCancelledByTheUser":"Authentication was cancelled by the user","officeVersionDoesNotSupportAuthentication":"Your current version of Office does not support displaying an authentication dialog. Please update to a newer version, or try Office Online, if you would like to run this snippet."};
+    </script>
+
+    <!-- JS Libraries -->
+    <script crossorigin="anonymous" src="https://unpkg.com/core-js@2.4.1/client/core.min.js"></script>
+    <script crossorigin="anonymous" src="https://unpkg.com/@microsoft/office-js-helpers@0.7.4/dist/office.helpers.min.js"></script>
+    <script crossorigin="anonymous" src="https://unpkg.com/jquery@3.1.1"></script>
+
+    <!-- Script -->
+    <script type="text/javascript">
+        var Settings;
+        Office.initialize = function() {
+            var input = document.querySelector("#input");
+            Settings = Office.context.document.settings;
+            
+            //Try to get settings
+            tryCatch(function(){
+              input.value = Settings.get("text") || "";
+            });
+            
+            //Try submit data
+            input.addEventListener("change",function(){
+              save();
+            });
+        };
+        
+        function save(){
+          //OfficeHelpers.UI.notify("saving...");
+          tryCatch(function(){
+            Settings.set("text", input.value);
+            Settings.saveAsync()
+          });
+        }
+        
+        function tryCatch(func){
+          try {
+            func()
+          } catch(e){
+            OfficeHelpers.UI.notify(e)
+          }
+        }
+
+    </script>
+</body>
+
+</html>

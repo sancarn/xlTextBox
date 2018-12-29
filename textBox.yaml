@@ -1,0 +1,54 @@
+name: Blank snippet
+description: ''
+host: EXCEL
+api_set: {}
+script:
+    content: |-
+        window.addEventListener("load",function(){
+            var input = document.querySelector("#input");
+            try {
+                input.value = Office.Settings.get("text")||"";
+            } catch (e) {
+                document.querySelector("#errors").innerText = "ERROR!" + e.toString()
+            }
+        })
+        function saveData(){
+            var input = document.querySelector("#input");
+            try {
+                Office.Settings.set("text",input.value);
+            } catch (e) {
+                document.querySelector("#errors").innerText = "ERROR!" + e.toString()
+            }
+        }
+    language: typescript
+template:
+    content: "<!-- saved from url=(0060)https://sancarn.github.io/msoAddinTests/textBox/textBox.html -->\n<html>\n\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n</head>\n\n<body>\n\t<input id=\"input\" onchange=\"saveData()\">\n\t<textarea id=\"errors\">\n      \n    </textarea>\n\n</body>\n\n</html>"
+    language: html
+style:
+    content: |-
+        section.samples {
+            margin-top: 20px;
+        }
+
+        section.samples .ms-Button, section.setup .ms-Button {
+            display: block;
+            margin-bottom: 5px;
+            margin-left: 20px;
+            min-width: 80px;
+        }
+    language: css
+libraries: |
+    https://appsforoffice.microsoft.com/lib/1/hosted/office.js
+    @types/office-js
+
+    office-ui-fabric-js@1.4.0/dist/css/fabric.min.css
+    office-ui-fabric-js@1.4.0/dist/css/fabric.components.min.css
+
+    core-js@2.4.1/client/core.min.js
+    @types/core-js
+
+    @microsoft/office-js-helpers@0.7.4/dist/office.helpers.min.js
+    @microsoft/office-js-helpers@0.7.4/dist/office.helpers.d.ts
+
+    jquery@3.1.1
+    @types/jquery@3.3.1
