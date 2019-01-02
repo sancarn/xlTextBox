@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Addins minimally require:
-  
+  * <?xml version="1.0" encoding="UTF-8"?> at the top of the document.
   * AppDomain      (can be anything)
   * SourceLocation (MUST BE A VALID URL which doesn't return http error code. Can be a file:/// url also)
   * ProviderName   (can be anything)
